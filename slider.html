@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suri</title>
+    <style>
+        
+       #typing-text {
+       
+            position:relative;
+            top:10px;
+            font-size: 24px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        
+        
+        html{
+            scroll-behavior: smooth;
+        }
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider {
+            display: flex;
+           transition: transform 0.5s ease-in-out;
+        
+        }
+
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 200px;
+            height: auto;
+            border-radius:10px;
+            border:3px solid rgba(247, 4, 169, 0.51);
+            box-shadow:0 4px 32px 0 rgba(0,0,0,.37);
+           
+            
+            
+            
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+        
+         body{
+      
+          min-height:100vh;
+          background-image:url("2.jpeg");
+          background-size:cover;
+          background-position:center;
+          background-repeat:no-repeat;
+          backdrop-filter:blur(2px);
+          
+      }
+      button{
+          position:relative;
+          top:2cm;
+          border-radius:10px;
+          padding:5px;
+          font-size:20px;
+          font-family: 'Courier New', monospace;
+          
+      }
+      a{
+          text-decoration:none;
+          color:black;
+      }
+      audio {
+        
+         position:relative;
+         top:-1cm;
+        
+      }
+     src{
+         font-size:12px;
+         width:10px
+     }
+    </style>
+</head>
+<body>
+    
+    
+<center>
+    <p style="weight: strong; Font-size:13px;font-weight:bold;">Delulu💕</p>
+<div class="slider-container">
+    <div class="slider">
+        <div class="slide">
+            <img src="1.jpeg" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="2.jpeg" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="4.jpeg" alt="Image 3">
+        </div>
+        <div class="slide" style=" position:relative; top:1.7cm; ">
+            <img src="3.jpeg" alt="Image 3" >
+        </div>
+        <div class="slide" style=" position:relative; top:1.7cm; ">
+            <img src="5.jpeg" alt="Image 3">
+        </div>
+    </div>
+    <div class="prev" onclick="prevSlide()">❮</div>
+    <div class="next" onclick="nextSlide()">❯</div>
+</div>
+
+
+
+<div>
+    <span id="typing-text" style="color:ghostwhite;font-weight:bold;"></span>
+</div>
+
+<img src="https://media.tenor.com/hOZuAPhGsA8AAAAi/peach-goma-puppy-eyes-starry.gif">
+
+
+
+</center>
+<center>
+    <button> <a href="">Click Me! </a></button>
+    
+    <audio controls>
+    <source src="K.mp3"type="audio/mp3">
+    <source src="K.mp3"type="audio/ogg">
+    
+</audio>
+</center>
+
+
+
+<script>
+    let slideIndex = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelectorAll('.slide');
+        if (index >= slides.length) {
+            slideIndex = 0;
+        } else if (index < 0) {
+            slideIndex = slides.length - 1;
+        }
+        const offset = -slideIndex * 100;
+        document.querySelector('.slider').style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextSlide() {
+        slideIndex++;
+        showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+        slideIndex--;
+        showSlide(slideIndex);
+    }
+
+    /*Auto slide*/
+    setInterval(nextSlide, 4000);
+    
+    
+    const textToType = "Sorry na 👉👈";
+    let currentCharacterIndex = 0;
+    const typingElement = document.getElementById('typing-text');
+
+    function typeNextCharacter() {
+        if (currentCharacterIndex < textToType.length) {
+            const currentText = textToType.substring(0, currentCharacterIndex + 1);
+            typingElement.textContent = currentText;
+            currentCharacterIndex++;
+        } else {
+            clearInterval(typingInterval);
+            setTimeout(startTypingLoop, 1000); // Delay before starting the loop again (adjust as needed)
+        }
+    }
+
+    function startTypingLoop() {
+        currentCharacterIndex = 0;
+        typingInterval = setInterval(typeNextCharacter, 100); // Adjust the interval as needed
+    }
+
+    let typingInterval = setInterval(typeNextCharacter, 100); // Initial start
+    
+    
+    
+    
+    
+    
+</script>
+
+</body>
+</html>
